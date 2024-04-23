@@ -4,6 +4,10 @@ import { saveSentEmails, getEmails, moveEmailsToBin, toggleStarredEmails, delete
 
 const routes = express.Router();
 
+// Define a route for the root URL ("/")
+routes.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
 
 routes.post('/save', saveSentEmails);
 routes.get('/emails/:type', getEmails);
