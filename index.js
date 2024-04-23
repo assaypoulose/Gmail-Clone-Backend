@@ -13,7 +13,13 @@ app.use(express.urlencoded({ extended:true }));
 app.use(express.json({  extended:true }));
 app.use('/',routes);
 
-const PORT = process.env.PORT;
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
+});
+
+const PORT = process.env.PORT || 8000; // Default to port 8000 if PORT is not provided in the environment
 
 Connection();
 
